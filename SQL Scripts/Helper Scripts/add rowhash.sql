@@ -1,0 +1,28 @@
+USE FSA
+
+--BEGIN TRANSACTION
+
+----DROP INDEX [NCINDEX_DIM5_ROWHASH] ON DimAssets
+
+--ALTER TABLE [dbo].[FactAssetPrices] DROP COLUMN RowHash
+
+
+
+--ALTER TABLE [dbo].[FactAssetPrices]  ADD RowHash AS CONVERT(binary(16),HASHBYTES('MD5', CONCAT([AssetName], AssetType, AssetExchange))) PERSISTED
+
+--CREATE NONCLUSTERED INDEX NCINDEX_DIMASSETS_ROWHASH ON [dbo].[FactAssetPrices](RowHash)
+
+--COMMIT TRANSACTION
+
+
+
+BEGIN TRANSACTION
+
+
+--ALTER TABLE [dbo].[FactAssetPrices] DROP COLUMN RowHash
+
+ALTER TABLE [dbo].[FactAssetPrices]  ADD UniqueRows AS CONVERT(binary(16),HASHBYTES('MD5', CONCAT([PriceOpen],[PriceHigh],[PriceLow],[PriceClose],[Volume]))) PERSISTED
+
+CREATE NONCLUSTERED INDEX NCINDEX_FACTASSETPRICES_UNIQUEROWS ON [dbo].[FactAssetPrices](UniqueRows)
+
+COMMIT TRANSACTION

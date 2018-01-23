@@ -1,0 +1,10 @@
+https://stackoverflow.com/questions/4134740/grant-select-permission-on-a-view-but-not-on-underlying-objects
+
+https://stackoverflow.com/questions/368414/grant-select-on-a-view-not-base-table-when-base-table-is-in-a-different-database
+
+
+https://www.mssqltips.com/sqlservertip/1523/how-to-setup-sql-server-alerts-and-email-operator-notifications/
+
+https://docs.microsoft.com/en-us/sql/relational-databases/database-mail/create-a-database-mail-profile
+
+https://docs.microsoft.com/en-us/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail
