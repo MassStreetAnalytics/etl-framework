@@ -25,6 +25,7 @@ When you start a new project follow these steps:
 
 
 ![Change Package ID](http://www.massstreet.net/documentation-images/etl-framework/ChangePackageID.png)
+
 Figure 1. Change package ID.
 
 
