@@ -23,10 +23,10 @@ When you start a new project follow these steps:
 
 6.  Fill in the VersionComments, VersionMajor, and VersionMinor.
 
-<center>
-![Change Package ID](http://www.massstreet.net/documentation-images/etl-framework/ChangePackageID.png)<br>
+
+![Change Package ID](http://www.massstreet.net/documentation-images/etl-framework/ChangePackageID.png)
 Figure 1. Change package ID.
-</center>
+
 
 **Package Variables**
 
