@@ -16,32 +16,32 @@ Figure 1 represents the load process. Each stage is only loosely coupled
 to the downstream stage. That is to say that if a particular piece
 fails, it does not fail the entire process.
 
-*Acquire*
+**Acquire**
 
 Each ETL process that pulls data into the system is entirely independent
 of any other process. Each dataset is pulled from its source system and
 placed in a staging table.
 
-*Consolidate*
+**Consolidate**
 
 All data that is collected in staging tables is moved to common model
 tables together. The common model is a unified representation of all
 data across systems.
 
-*Integrate*
+**Integrate**
 
 Moving data from consolidate to integrate is accomplished in the same
 step as moving from acquire to consolidate. Integrate is where we move
 the data from the common model into the warehouse tables.
 
-*Deliver*
+**Deliver**
 
 At this time, there are no OLAP cubes in the data architecture. Data is
 delivered through various vectors. Most of those vectors pass through
 the warehouse. A few bypass the warehouse and go straight to
 de-normalized reporting tables.
 
-***Relevant SQL02 Databases***
+**Relevant Databases**
 
 There are three databases used to deliver data.
 
@@ -69,12 +69,12 @@ de-normalized view.
 
 Figure 2. Actual ETL Job Sequence
 
-*Pull Data*
+**Pull Data**
 
 In general, all processes that acquire data from outside systems pull
 and clean data in the same step.
 
-*Load Warehouse*
+**Load Warehouse**
 
 The actual warehouse load processes is a combination of loading tables
 and auditing processes that are used to check and make sure everything
@@ -89,21 +89,21 @@ Row Counts is fully automated and documents how many records were loaded
 to each fact table and compares that to historical loads to determine if
 there is an anomaly in the load process.
 
-*Load Reporting Tables*
+**Load Reporting Tables**
 
 This job is for those processes that load de-normalized reporting tables
 that reside in the Reporting database only. The reporting tables that
 live in ODS are only for data professionals and are loaded by different
 processes.
 
-*Monitor DW Table Loads*
+**Monitor DW Table Loads**
 
 Check Tables Loads will report on unusual record load amounts. Either
 more than usual or none at all over a three day period are the trigger
 events. In the final step, volumetric data is dumped into a
 de-normalized reporting table for easy digest.
 
-***Data Cleansing***
+**Data Cleansing**
 
 As with any ETL process, some of the data that comes in to the system
 needs to be cleaned and standardized before it is loaded. Cleaning dates
@@ -117,7 +117,7 @@ been written yet.
 
 3.  Convert remaining dates to YYYYMMDD format
 
-***Loading Dimensions***
+**Loading Dimensions**
 
 Figure three shows the generalized process for loading warehouse
 dimensions. Most dimension load processes follow this design pattern.
@@ -139,7 +139,7 @@ The general process is explained as follows:
 
 Figure 3. Dimension loading sequence diagram.
 
-***Warehouse Load Commandments***
+**Warehouse Load Commandments**
 
 1.  **Thou shalt not put stand-alone codes in the database.** Always
     import code values along with their English explanations if
@@ -166,14 +166,14 @@ Figure 3. Dimension loading sequence diagram.
     in the data warehouse and need to be translated as part of the
     cleansing process.
 
-***Conventions***
+**Conventions**
 
 When developing ETL processes there are a number of conventions that
 must be adhered to. Those conventions are largely based on common sense,
 but they do change depending on what you are doing and where you are
 doing it.
 
-*Should I Use SSIS?*
+**Should I Use SSIS?**
 
 Nine times out of ten, the answer to this question is going to be no. As
 a general rule of thumb, only use SSIS to develop ETL processes if you
@@ -185,7 +185,7 @@ Most ETL processes move data from one database to another even if a flat
 file was created in an intermediate process. In the case when you have
 to cross servers, use a linked server.
 
-*Conventions for SSIS*
+**Conventions for SSIS**
 
 There is a standard template package. Use that as the starting point for
 any ETL that requires SSIS as lined out in the section above. Most of
@@ -207,7 +207,7 @@ build out your process, keep the following in mind:
 
 5.  Script task need to be developed using C\#.
 
-*Conventions for T-SQL*
+**Conventions for T-SQL**
 
 Every stored procedure needs to have a documentation block. The block
 needs to include the name of the developer, the date the script was
@@ -219,13 +219,13 @@ conventions:
 
 2.  All SQL reserve words need to be capitalized.
 
-*Conventions for C\#*
+**Conventions for C\#**
 
 Attempt to conform to Microsoft standards but this isn’t a hard rule as
 there should not be a preponderance of C\# development in the
 environment.
 
-*Conventions for ODS*
+**Conventions for ODS**
 
 Naming conventions in ODS appear to follow no pattern. This is because a
 primary rule of naming objects in this database is that they should
@@ -267,14 +267,14 @@ conform to the source system. The conventions for ODS are as follows:
 
     d.  Run date. Timestamp of when the load was completed.
 
-*Conventions for Reporting*
+**Conventions for Reporting**
 
 The reporting database does not follow any standard database naming
 conventions. The reporting database is mostly views exposed to users. As
 such, objects are named in a manner so that they are easily readable by
 users.
 
-***Wrapping Up***
+**Wrapping Up**
 
 This document attempts to address the major issues involved with
 developing ETL against the data warehouse. Of course, we cannot address
