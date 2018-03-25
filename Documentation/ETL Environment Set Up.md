@@ -2,7 +2,7 @@
 
 This process needs to be set up on every server that is running SSIS packages.
 
-*Create File I/O directory structure*
+**Create File I/O directory structure**
 
 When you have to process import files or output files back to users, there is a
 directory structure for you to do that. The structure looks like:
@@ -24,7 +24,7 @@ file. You can create whatever file structure necessary to facilitate your
 process inside of the In/Out folders as long as the base structure mentioned
 above exist.
 
-*Create Global Environment in the Integration Services Catalog*
+**Create Global Environment in the Integration Services Catalog**
 
 Packages are deployed to the SSIS catalogue using the project deployment model.
 There are some common variables used across all packages. These variables are
@@ -39,7 +39,7 @@ Variable name: RootFileDirectory
 
 Value: [Drive Letter]:\\InterfaceAndExtractFiles\\
 
-*Create SQL Server Aliases*
+***Create SQL Server Aliases***
 
 Create an alias with the following settings:
 
@@ -51,7 +51,7 @@ This setting makes the assumption that server names are relatively set in stone.
 If server names change, then it is preferable to use actual IP addresses. Create
 both 32 and 64bit aliases and make sure TCP/IP is enabled.
 
-*Create Server Objects*
+***Create Server Objects***
 
 Create a database called SSISManagement and run the following scripts in order:
 
