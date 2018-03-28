@@ -1,3 +1,8 @@
+-- =============================================
+-- Author: Bob Wakefield
+-- Create date: 5Oct17
+-- Description: Sample script to execute fact tables
+-- =============================================
 USE [ODS]
 GO
 
@@ -26,7 +31,7 @@ BEGIN
 
 
 BEGIN TRY
-EXEC sp_ProcessFactAssetPrices
+EXEC sp_ProcessFactTable1
 END TRY
 BEGIN CATCH
 PRINT 'Error sp_ProcessFactAssetPrices: '+CAST(ERROR_NUMBER()AS varchar(6))+' '+ERROR_MESSAGE()
@@ -34,11 +39,14 @@ END CATCH
 
 
 BEGIN TRY
-EXEC sp_ProcessFactExchangeCloseData
+EXEC sp_ProcessFactTable2
 END TRY
 BEGIN CATCH
-PRINT 'Error sp_ProcessFactExchangeCloseData: '+CAST(ERROR_NUMBER()AS varchar(6))+' '+ERROR_MESSAGE()
+PRINT 'Error sp_ProcessFactAssetPrices: '+CAST(ERROR_NUMBER()AS varchar(6))+' '+ERROR_MESSAGE()
 END CATCH
+
+--add more fact tables as you go
+
 
 
 
