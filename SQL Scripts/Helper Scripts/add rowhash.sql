@@ -1,26 +1,14 @@
---BEGIN TRANSACTION
-
-----DROP INDEX [NCINDEX_DIM5_ROWHASH] ON DimAssets
-
---ALTER TABLE [dbo].[FactAssetPrices] DROP COLUMN RowHash
-
-
-
---ALTER TABLE [dbo].[FactAssetPrices]  ADD RowHash AS CONVERT(binary(16),HASHBYTES('MD5', CONCAT([AssetName], AssetType, AssetExchange))) PERSISTED
-
---CREATE NONCLUSTERED INDEX NCINDEX_DIMASSETS_ROWHASH ON [dbo].[FactAssetPrices](RowHash)
-
---COMMIT TRANSACTION
-
+--Adding a RowHash on a TypeII dimension
 
 
 BEGIN TRANSACTION
 
+DROP INDEX [Index Name] ON DimYourDimension
 
---ALTER TABLE [dbo].[FactAssetPrices] DROP COLUMN RowHash
+ALTER TABLE [dbo].DimYourDimension DROP COLUMN RowHash
 
-ALTER TABLE [dbo].[FactAssetPrices]  ADD UniqueRows AS CONVERT(binary(16),HASHBYTES('MD5', CONCAT([PriceOpen],[PriceHigh],[PriceLow],[PriceClose],[Volume]))) PERSISTED
+ALTER TABLE [dbo].DimYourDimension  ADD RowHash AS CONVERT(binary(16),HASHBYTES('MD5', CONCAT(Column1, Column2, Column3))) PERSISTED
 
-CREATE NONCLUSTERED INDEX NCINDEX_FACTASSETPRICES_UNIQUEROWS ON [dbo].[FactAssetPrices](UniqueRows)
+CREATE NONCLUSTERED INDEX [Index Name] ON [dbo].DimYourDimension(RowHash)
 
 COMMIT TRANSACTION
