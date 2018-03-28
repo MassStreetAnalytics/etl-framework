@@ -53,7 +53,7 @@ both 32 and 64bit aliases and make sure TCP/IP is enabled.
 
 ***Create Server Objects***
 
-Create a database called SSISManagement and run the following scripts in order:
+Create a database called SSISManagement and run the following scripts in order. These scripts can be found in the SQLScripts/Framework Objects Folder
 
 1.  Create ETL Framework Tables.sql
 
