@@ -1,0 +1,12 @@
+{
+  "mssql":{
+    "dns":"DSN=ETL;"
+  },
+  "email":{
+    "from_address": "noreply@MassStreet.net",
+    "to_address": "bob@MassStreet.net",
+    "password": "mh#CdQaUt@Pr48M?",
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 465
+  }
+}
