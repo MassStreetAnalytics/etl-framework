@@ -1,3 +1,12 @@
+'''
+    File name: FileProcessor.py
+    Author: Drew Huslig
+    Date Created: 4/2/2018
+    Date Last Modified: 4/2/18
+    Python Version: 3.6.3
+    Description: Stages data and archives files with a timestamp
+'''
+
 import os
 import time
 import yaml

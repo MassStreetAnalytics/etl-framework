@@ -1,3 +1,12 @@
+'''
+    File name: FileRetriever.py
+    Author: Drew Huslig
+    Date Created: 4/2/2018
+    Date Last Modified: 4/2/18
+    Python Version: 3.6.3
+    Description: Retrieve a file from a remote source
+'''
+
 import os
 import urllib.request
 import sys

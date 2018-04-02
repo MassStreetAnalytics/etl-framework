@@ -1,3 +1,12 @@
+'''
+    File name: FileConverter.py
+    Author: Drew Huslig
+    Date Created: 4/2/2018
+    Date Last Modified: 4/2/18
+    Python Version: 3.6.3
+    Description: Prepare files by converting them to a .csv if necessary and places them in a processing folder
+'''
+
 import os
 import sys
 sys.path.append(".")

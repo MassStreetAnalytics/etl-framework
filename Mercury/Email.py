@@ -1,7 +1,5 @@
 import os
 import yaml
-import logging
-import traceback
 import smtplib
 from email.message import EmailMessage
 
@@ -25,7 +23,7 @@ class Email:
         print(self.message)
         msg = EmailMessage()
         msg['From'] = from_address
-        msg['To'] = 'drewhuslig@gmail.com'  # to_address
+        msg['To'] = to_address
         msg['Subject'] = self.subject
         msg.set_content(self.message)
 
@@ -34,5 +32,5 @@ class Email:
             server.login(from_address, password)
             server.send_message(msg)
             server.quit()
-        except Exception as e:
-            logging.error(traceback.format_exc())
+        except TimeoutError as e:
+            print(str(e))
