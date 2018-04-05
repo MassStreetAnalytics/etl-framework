@@ -2,21 +2,28 @@
 DBCC opentran
 KILL 64
 
+GO
 --Create Schema
 CREATE SCHEMA SchemaName
 
+GO
 
---Change collation
-SELECT name, collation_name 
-FROM sys.databases
-WHERE name = 'ODS'
+--Change collation to something case insensative
+USE master;  
+
+ALTER DATABASE [your database name] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+
+ALTER DATABASE [your database name] COLLATE SQL_Latin1_General_CP1_CS_AS ;  
+ 
+
+ALTER DATABASE [your database name] SET MULTI_USER WITH ROLLBACK IMMEDIATE
 
 
-ALTER DATABASE ODS SET SINGLE_USER WITH ROLLBACK IMMEDIATE; 
-ALTER DATABASE ODS -- put your database name here
-COLLATE Latin1_General_CS_AS
-ALTER DATABASE ODS SET MULTI_USER; 
+--Verify the collation setting.  
+SELECT name, collation_name  
+FROM sys.databases  
+WHERE name = N'[your database name]';  
+GO  
 
-SELECT * FROM ::fn_helpcollations()
-SQL_Latin1_General_CP1_CI_AS
-
+--Alter collation at the column level
+ALTER TABLE [table name] ALTER COLUMN [column name] [your data type] COLLATE SQL_Latin1_General_CP1_CS_AS
