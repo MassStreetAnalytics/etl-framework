@@ -8,7 +8,7 @@ CREATE SCHEMA SchemaName
 
 GO
 
---Change collation to something case insensative
+--Change collation to something case sensative
 USE master;  
 
 ALTER DATABASE [your database name] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
