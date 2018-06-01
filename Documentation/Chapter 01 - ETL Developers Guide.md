@@ -135,7 +135,7 @@ The general process is explained as follows:
 5.  Load the common model table with key fields necessary to populate
     fact tables.
 
-![Loading A Dimension](http://www.massstreet.net/documentation-images/etl-framework/DimensionLoadSequenceDiagram.png)
+![Loading A Dimension](http://www.massstreet.net/documentation-images/etl-framework/DimensionLoadSequenceDiagram.png?)
 
 Figure 3. Dimension loading sequence diagram.
 
