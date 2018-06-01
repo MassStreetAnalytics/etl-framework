@@ -111,9 +111,9 @@ is a common task and is outlined below. Date cleansing requires several
 steps. It should be turned into a function, but the function has not
 been written yet.
 
-1.  Set empty dates to some arbitrary date.
+1.  Set empty dates to some arbitrary date. We recommend 99991230.
 
-2.  Set error dates to some arbitrary date.
+2.  Set error dates to some arbitrary date. We recommend 99991231.
 
 3.  Convert remaining dates to YYYYMMDD format
 
