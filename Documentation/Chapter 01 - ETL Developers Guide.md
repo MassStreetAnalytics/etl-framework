@@ -10,7 +10,7 @@ that data into a single dataflow that terminates in the data warehouse.
 The data moves through in stages. Each stage will be described below.
 
 ![ETL Diagram](http://www.massstreet.net/documentation-images/etl-framework/ETLDiagram.png)
-Figure 1. Warehouse load process.
+Figure 1. Generalized warehouse load process.
 
 Figure 1 represents the load process. Each stage is only loosely coupled
 to the downstream stage. That is to say that if a particular piece
