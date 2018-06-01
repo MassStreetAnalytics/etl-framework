@@ -67,7 +67,7 @@ de-normalized view.
 
 ![ETL Flow](http://www.massstreet.net/documentation-images/etl-framework/ETLFlow.png)
 
-Figure 2. Actual ETL Job Sequence
+Figure 2. Generalized ETL Job Sequence
 
 **Pull Data**
 
@@ -84,7 +84,7 @@ processed first; then all fact tables are processed. Fact table loads
 communicate back to staging to take note of what exactly was loaded to
 the warehouse. The Finalize and Audit processes checks staging records
 and reports discrepancies. **Every fact table load you build will need
-code added to the usp\_MarkRecordsAsProcesses stored procedure.** Record
+code added to the usp\_MarkRecordsAsProcessed stored procedure.** Record
 Row Counts is fully automated and documents how many records were loaded
 to each fact table and compares that to historical loads to determine if
 there is an anomaly in the load process.
