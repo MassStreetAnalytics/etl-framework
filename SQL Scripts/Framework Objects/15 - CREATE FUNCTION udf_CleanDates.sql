@@ -34,11 +34,11 @@ DECLARE @EmptyRecordCode BIGINT = 99991231
 DECLARE @ErrorDateCode BIGINT = 99991130
 
 SELECT @MaxDate = CAST(MAX(DateCK) AS NCHAR(8))
-FROM FSA.dbo.DimDate
+FROM YourDatabase.YourSchema.DimDate
 WHERE DateCK NOT IN (@EmptyRecordCode,@ErrorDateCode)
 
 SELECT @MinDate = CAST(MIN(DateCK) AS NCHAR(8))
-FROM FSA.dbo.DimDate
+FROM YourDatabase.YourSchema.DimDate
 
 
 --Set empty dates to the empty field code
