@@ -73,16 +73,30 @@ Create a database called SSISManagement and run the following scripts in order. 
 
 1.  Create ETL Framework Tables.sql
 
-2.  Create ETL Framework Stored Procs.sql
+2.  CREATE TABLE TableLoadReport.sql
 
-3.  Create Configuration Table.sql
+3.  Create ETL Framework Stored Procs.sql
 
-4.  Create Proc ErrorLogByPackage.sql
+4.  CREATE PROC ErrorLogByPackage.sql
 
-5.  Create Proc BatchRunTime.sql
+5.  CREATE PROC BatchRunTime.sql
 
-6.  Create Proc ErrorLogByBatch.sql
+6.  CREATE PROC ErrorLogByBatch.sql
 
-7.  Create Proc PackageRunTime.sql
+7.  CREATE PROC GetVariableValues.sql
 
-8.  Create Proc GetVariablesValues.sql
+8.  CREATE PROC PackageRunTime.sql
+
+9.  CREATE TABLE SSISConfigurations.sql
+
+10. CREATE VIEW v_RowCountLog.sql
+
+11. CREATE VIEW v_ShowAdverseTableLoads.sql
+
+12. CREATE VIEW v_SSISErrorLogByPackage.sql
+
+13. CREATE VIEW v_SSISPackageBatchRunTime.sql
+
+14. CREATE VIEW v_SSISPackageRunTime.sql
+
+15. CREATE FUNCTION udf_CleanDates.sql
