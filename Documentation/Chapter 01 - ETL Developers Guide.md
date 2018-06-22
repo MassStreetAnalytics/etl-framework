@@ -107,9 +107,8 @@ de-normalized reporting table for easy digest.
 
 As with any ETL process, some of the data that comes in to the system
 needs to be cleaned and standardized before it is loaded. Cleaning dates
-is a common task and is outlined below. Date cleansing requires several
-steps. It should be turned into a function, but the function has not
-been written yet.
+is a common task and is outlined below. Use the function udf_CleanDates()
+to clean dates properly. In the SQL Scripts/Framework Objects folder open the file CREATE FUNCTION udf_CleanDates.sql and assign the empty and error date variables as appropriate to your system. The function of udf_Cleandates is described below.
 
 1.  Set empty dates to some arbitrary date. We recommend 99991230.
 
