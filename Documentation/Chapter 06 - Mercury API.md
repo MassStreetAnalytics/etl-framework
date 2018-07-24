@@ -1,10 +1,4 @@
-# Welcome to the documentation for this file processing module
-
-There are three main parts of the module
-
-* The File Retriever
-* The File Converter
-* The File Processor
+# Mercury API
 
 
 ## FileRetriever()
