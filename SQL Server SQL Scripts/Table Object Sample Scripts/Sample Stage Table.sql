@@ -16,6 +16,7 @@ CREATE TABLE YourSchemaName.YourStageTableName(
 	[UniqueDims] [varbinary](35) NULL,
 	[UniqueRows] [varbinary](16) NULL,
 	[SourceSystem] [nvarchar](255) NULL,
+	[Cleansed] [bit] NULL,
 	[ErrorRecord] [bit] NULL,
 	[Processed] [bit] NULL,
 	[RunDate] [datetime] NULL,
