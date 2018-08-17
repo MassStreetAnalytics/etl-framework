@@ -2,7 +2,7 @@ DROP TABLE if exists DimDate;
 
 CREATE TABLE DimDate
 (
-DateCK INT NOT NULL,
+DateCK BIGINT NOT NULL,
 date_actual DATE NOT NULL,
 epoch BIGINT NOT NULL,
 day_suffix VARCHAR(4) NOT NULL,
