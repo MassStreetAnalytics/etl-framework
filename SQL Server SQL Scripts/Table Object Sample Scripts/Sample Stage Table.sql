@@ -27,22 +27,22 @@ CREATE TABLE YourSchemaName.YourStageTableName(
 
 GO
 
-ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_ETLKey]  DEFAULT (newid()) FOR [ETLKey]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_ETLKey]  DEFAULT (newid()) FOR [ETLKey]
 GO
 
-ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_SourceSystem]  DEFAULT (N'Copia') FOR [SourceSystem]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_SourceSystem]  DEFAULT (N'Copia') FOR [SourceSystem]
 GO
 
-ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_Cleansed]  DEFAULT ((0)) FOR [Cleansed]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_Cleansed]  DEFAULT ((0)) FOR [Cleansed]
 GO
 
-ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_ErrorRecord]  DEFAULT ((0)) FOR [ErrorRecord]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_ErrorRecord]  DEFAULT ((0)) FOR [ErrorRecord]
 GO
 
-ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_Processed]  DEFAULT ((0)) FOR [Processed]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_Processed]  DEFAULT ((0)) FOR [Processed]
 GO
 
-ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_RunDate]  DEFAULT (getdate()) FOR [RunDate]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_RunDate]  DEFAULT (getdate()) FOR [RunDate]
 GO
 
 
