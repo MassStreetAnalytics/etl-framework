@@ -21,17 +21,29 @@ CREATE TABLE YourSchemaName.YourStageTableName(
 	[RunDate] [datetime] NULL,
  CONSTRAINT [PK_YourStageTableName] PRIMARY KEY CLUSTERED 
 (
-	[ETLKey] ASC
+       [ETLKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-END
-GO
-
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[eod].[DF_YourStageTableName_ETLKey]') AND type = 'D')
-BEGIN
-ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_ETLKey]  DEFAULT (newid()) FOR [ETLKey]
-END
 
 GO
+
+ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_ETLKey]  DEFAULT (newid()) FOR [ETLKey]
+GO
+
+ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_SourceSystem]  DEFAULT (N'Copia') FOR [SourceSystem]
+GO
+
+ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_Cleansed]  DEFAULT ((0)) FOR [Cleansed]
+GO
+
+ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_ErrorRecord]  DEFAULT ((0)) FOR [ErrorRecord]
+GO
+
+ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_Processed]  DEFAULT ((0)) FOR [Processed]
+GO
+
+ALTER TABLE [YourSchemaName].[YourTableName] ADD  CONSTRAINT [DF_YourTableName_RunDate]  DEFAULT (getdate()) FOR [RunDate]
+GO
+
 
 
