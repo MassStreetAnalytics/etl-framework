@@ -19,7 +19,7 @@ The following links may be helpful in setting up your environment.
 
 [Configure SQL Server Agent Mail to Use Database Mail](https://docs.microsoft.com/en-us/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail "Configure SQL Server Agent Mail to Use Database Mail")
 
-
+[Running a SSIS Package from SQL Server Agent Using a Proxy Account](https://www.mssqltips.com/sqlservertip/2163/running-a-ssis-package-from-sql-server-agent-using-a-proxy-account "Running a SSIS Package from SQL Server Agent Using a Proxy Account")
 
 
 
