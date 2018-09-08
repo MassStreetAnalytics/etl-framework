@@ -34,4 +34,44 @@ END
 
 GO
 
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_ETLKey]') AND type = 'D')
+BEGIN
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_ETLKey]  DEFAULT (newid()) FOR [ETLKey]
+END
 
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_SourceSystem]') AND type = 'D')
+BEGIN
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_SourceSystem]  DEFAULT (N'Copia') FOR [SourceSystem]
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_Cleansed]') AND type = 'D')
+BEGIN
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_Cleansed]  DEFAULT ((0)) FOR [Cleansed]
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_ErrorRecord]') AND type = 'D')
+BEGIN
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_ErrorRecord]  DEFAULT ((0)) FOR [ErrorRecord]
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_Processed]') AND type = 'D')
+BEGIN
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_Processed]  DEFAULT ((0)) FOR [Processed]
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_RunDate]') AND type = 'D')
+BEGIN
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_RunDate]  DEFAULT (getdate()) FOR [RunDate]
+END
+
+GO
