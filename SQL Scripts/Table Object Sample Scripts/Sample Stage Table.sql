@@ -43,7 +43,7 @@ GO
 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.[DF_YourStageTableName_SourceSystem]') AND type = 'D')
 BEGIN
-ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_SourceSystem]  DEFAULT (N'Copia') FOR [SourceSystem]
+ALTER TABLE YourSchemaName.YourStageTableName ADD  CONSTRAINT [DF_YourStageTableName_SourceSystem]  DEFAULT (N'YourSourceSystem') FOR [SourceSystem]
 END
 
 GO
