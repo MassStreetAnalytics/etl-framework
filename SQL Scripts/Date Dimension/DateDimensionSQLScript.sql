@@ -4,8 +4,8 @@ GO
 --Specify Start Date and End date here
 --Value of Start Date Must be Less than Your End Date 
 
-DECLARE @StartDate DATETIME = '01/01/2099' --Starting value of Date Range
-DECLARE @EndDate DATETIME = '12/31/2099' --End Value of Date Range
+DECLARE @StartDate DATETIME = '01/01/1950' --Starting value of Date Range
+DECLARE @EndDate DATETIME = '12/31/2050' --End Value of Date Range
 
 /**********************************************************************************/
 
@@ -447,7 +447,7 @@ sp_rename 'DimDate.DateKey','DateCK','COLUMN'
 GO
 sp_rename 'DimDate.FullDateUSA','FormattedDate','COLUMN'
 GO
-sp_rename 'DimDate.DayOfWeekUSA','DayofWeek','COLUMN'
+sp_rename 'DimDate.DayOfWeekUSA','DayOfWeek','COLUMN'
 GO
 sp_rename 'DimDate.Quarter','QuarterInYear','COLUMN'
 GO
@@ -559,7 +559,7 @@ WHERE IsHoliday = ''
 
 --Alter to your needs
 UPDATE DimDate
-SET IsWorkday =
+SET IsWorkDay =
 CASE
 WHEN DayName <> 'Sunday' AND DayName <> 'Saturday' THEN 'Yes'
 ELSE 'No'

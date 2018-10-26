@@ -1,17 +1,17 @@
-/****** Object:  Table [dbo].[DimYourDimensionName]    Script Date: 11/20/2017 11:46:19 PM ******/
-DROP TABLE IF EXISTS [dbo].[DimYourDimensionName]
+/****** Object:  Table [dw].[DimYourDimensionName]    Script Date: 11/20/2017 11:46:19 PM ******/
+DROP TABLE IF EXISTS [dw].[DimYourDimensionName]
 GO
 
-/****** Object:  Table [dbo].[DimYourDimensionName]    Script Date: 11/20/2017 11:46:19 PM ******/
+/****** Object:  Table [dw].[DimYourDimensionName]    Script Date: 11/20/2017 11:46:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DimYourDimensionName]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dw].[DimYourDimensionName]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[DimYourDimensionName](
+CREATE TABLE [dw].[DimYourDimensionName](
 	[YourDimensionNameCK] [bigint] IDENTITY(1,1) NOT NULL,
 	[CreatedBy] [nvarchar](50) NULL,
 	[CreatedOn] [datetime] NULL,
@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[DimYourDimensionName](
 	CONVERT([nvarchar](35),Column4,0),
 	CONVERT([nvarchar](35),Column5,0),
 	CONVERT([nvarchar](35),Column6,0))),0)) PERSISTED,
- CONSTRAINT [PK_YourDimension] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_DimYourDimensionName] PRIMARY KEY CLUSTERED 
 (
 	[YourDimensionNameCK] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
