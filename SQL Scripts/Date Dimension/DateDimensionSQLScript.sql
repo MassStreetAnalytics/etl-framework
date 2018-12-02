@@ -1,4 +1,3 @@
---stuff to resolve conflict
 DROP TABLE IF EXISTS DimDate
 GO
 /********************************************************************************************/
