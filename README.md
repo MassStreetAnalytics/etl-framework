@@ -6,6 +6,8 @@ This is the system that is used when Mass Street resources are tasked with imple
 
 There should be ZERO references to any specific system or database aside from Reporting and ODS. If you should find such a reference, please log an issue.
 
+Postgres SQL Scripts are currently in active development. All you'll find there now is T-SQL being converted to PL/SQL.
+
 The following links may be helpful in setting up your environment.
 
 
