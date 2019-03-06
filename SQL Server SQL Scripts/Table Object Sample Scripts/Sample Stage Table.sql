@@ -9,8 +9,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'YourSchemaName.YourStageTableName') AND type in (N'U'))
-BEGIN
+
 CREATE TABLE YourSchemaName.YourStageTableName(
 	[ETLKey] [uniqueidentifier] NOT NULL,
 	[UniqueDims] [varbinary](35) NULL,

@@ -9,8 +9,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DimYourDimensionName]') AND type in (N'U'))
-BEGIN
+
 CREATE TABLE [dbo].[DimYourDimensionName](
 	[YourDimensionNameCK] [bigint] IDENTITY(1,1) NOT NULL,
 	[CreatedBy] [nvarchar](50) NULL,
