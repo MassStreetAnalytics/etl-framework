@@ -38,7 +38,7 @@ kArchiveDestination = 'C:/InterfaceAndExtractFiles/../Archive/' #path to archive
 kFileURL = 'https://url.com/data.csv' #URL of File
 kSiteURL = 'https://url.com' #URL of Site
 
-print("Starting: Processing GetPSD_Data")
+print("Starting: Processing Data")
 
 # verify that the  site is available and the internet connection is working
 try:
@@ -58,7 +58,7 @@ except:
 # Read csv data into pandas and write | delimited txt file
 try:
     print("Reading csv file: {}".format(kFileCSV))
-    df = pd.read_csv(kFileCSV,index_col=False)
+    df = pd.read_csv(kFileCSV,index_col=Falsed,type=str)
     downloadTimeStamp = datetime.datetime.today().strftime('%Y%m')
     print("Setting download timestamp")
     df['AsOfMonth'] = downloadTimeStamp

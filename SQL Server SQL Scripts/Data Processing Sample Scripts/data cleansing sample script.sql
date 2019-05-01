@@ -35,7 +35,7 @@ WHERE [Date] IS NULL
 
 --Set error dates to the error field code
 UPDATE [eod].[EODPrices]
-SET [Date] = '99991231'
+SET [Date] = '99991131'
 WHERE ISDATE([Date]) = 0
 
 

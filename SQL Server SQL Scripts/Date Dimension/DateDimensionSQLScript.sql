@@ -1,17 +1,36 @@
-DROP TABLE IF EXISTS DimDate
-GO
+USE EDW
 /********************************************************************************************/
 --Specify Start Date and End date here
 --Value of Start Date Must be Less than Your End Date 
 
-DECLARE @StartDate DATETIME = '01/01/2099' --Starting value of Date Range
+DECLARE @StartDate DATETIME = '01/01/1900' --Starting value of Date Range
 DECLARE @EndDate DATETIME = '12/31/2099' --End Value of Date Range
 
 /**********************************************************************************/
 
+BEGIN TRANSACTION
+
+DROP TABLE IF EXISTS dw.DimMonth
+DROP TABLE IF EXISTS dw.DimDate
+
+CREATE TABLE [dw].[DimMonth](
+	[MonthCK] [bigint] NOT NULL,
+	[MonthInYear] [nvarchar](2) NULL,
+	[MonthName] [nvarchar](9) NULL,
+	[MonthOfQuarter] [nvarchar](2) NULL,
+	[QuarterInYear] [char](1) NULL,
+	[QuarterName] [nvarchar](9) NULL,
+	[Year] [char](4) NULL,
+	[YYYYMM] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MonthCK] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 
 CREATE TABLE	DimDate
-	(	DateKey INT primary key, 
+	(	DateKey BIGINT primary key,
 		Date DATETIME,
 		FullDateUK CHAR(10), -- Date in dd-MM-yyyy format
 		FullDateUSA CHAR(10),-- Date in MM-dd-yyyy format
@@ -614,6 +633,35 @@ AND DayOfWeek = 2
 GROUP BY Year
 )
 
+ALTER SCHEMA dw TRANSFER dbo.DimDate
 
-SELECT *
-FROM DimDate
+SET IDENTITY_INSERT dw.DimMonth ON;
+
+
+INSERT INTO dw.DimMonth(
+MonthCK,
+MonthInYear,
+[MonthName],
+MonthOfQuarter,
+QuarterInYear,
+QuarterName,
+[Year],
+YYYYMM
+)
+SELECT
+DISTINCT
+LEFT(DateCK,6) AS MonthCK,
+MonthInYear,
+[MonthName],
+MonthOfQuarter,
+QuarterInYear,
+QuarterName,
+[Year],
+YYYYMM
+FROM dw.DimDate
+
+SET IDENTITY_INSERT dw.DimMonth OFF;
+
+
+
+COMMIT TRANSACTION
