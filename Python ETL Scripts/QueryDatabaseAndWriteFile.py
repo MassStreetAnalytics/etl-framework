@@ -28,7 +28,6 @@ try:
     print("Connecting to SQL Server database")
     connection_string = 'DSN=ETL;'
     conn = db.connect(connection_string)
-    print("Preparing database for update")
     csr = conn.cursor()
     sql = "SELECT * FROM [table or view]"
     df = pd.read_sql(sql,conn)
