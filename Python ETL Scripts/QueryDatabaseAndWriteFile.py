@@ -22,19 +22,6 @@ kFileDestination = 'C:/InterfaceAndExtractFiles/../Out/data.csv' #full path to p
 
 print("Starting: Processing Data")
 
-# Read csv data into pandas and write | delimited txt file
-try:
-    print("Reading csv file: {}".format(kFileCSV))
-    df = pd.read_csv(kFileCSV,index_col=Falsed,type=str)
-    downloadTimeStamp = datetime.datetime.today().strftime('%Y%m')
-    print("Setting download timestamp")
-    df['AsOfMonth'] = downloadTimeStamp
-    fileTimeStampedTXT = kIAEFDestination + downloadTimeStamp + "data.txt"
-    print("Writing txt file to: {}".format(fileTimeStampedTXT))
-    df.to_csv(fileTimeStampedTXT, sep="|",index=False)
-except:
-    sys.exit("ERROR: Unable to read file and create txt file: {}".format(kFileTXT))
-
 #alter the below for your file.
 #bulk load txt file to SQL Server
 try:
