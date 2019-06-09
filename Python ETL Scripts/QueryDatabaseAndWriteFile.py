@@ -4,14 +4,9 @@
 ##Description: Queries database and writes file
 ##Modification log:
 
-
-import os
 import sys
-import urllib
-import datetime
 import pandas as pd
 import pyodbc as db
-import zipfile as zf
 
 #Constants used to process data files
 #Exsiting paths are examples only!
