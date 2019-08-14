@@ -17,6 +17,7 @@ CREATE TABLE YourSchemaName.YourStageTableName(
 	[SourceSystem] [nvarchar](255) NULL,
 	[Cleansed] [bit] NULL,
 	[ErrorRecord] [bit] NULL,
+	[ErrorReason] [nvarchar](255) NULL,
 	[Processed] [bit] NULL,
 	[RunDate] [datetime] NULL,
  CONSTRAINT [PK_YourStageTableName] PRIMARY KEY CLUSTERED 
