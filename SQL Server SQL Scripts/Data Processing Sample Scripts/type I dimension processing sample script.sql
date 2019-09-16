@@ -80,7 +80,21 @@ VALUES (
 1,
 SYSTEM_USER,
 CURRENT_TIMESTAMP
-);
+)
+
+WHEN MATCHED
+
+THEN
+UPDATE
+SET
+--your columns here
+target.[YourColumn] = source.[YourColumn],
+CreatedBy = SYSTEM_USER,
+CreatedOn = CURRENT_TIMESTAMP
+;
+
+
+;
 
 
 TRUNCATE TABLE cm.DimYourDimensionName
