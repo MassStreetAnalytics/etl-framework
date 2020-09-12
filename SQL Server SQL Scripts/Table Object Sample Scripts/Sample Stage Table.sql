@@ -11,15 +11,15 @@ GO
 
 
 CREATE TABLE YourSchemaName.YourStageTableName(
-	[ETLKey] [uniqueidentifier] NOT NULL,
-	[UniqueDims] [varbinary](35) NULL,
-	[UniqueRows] [varbinary](16) NULL,
-	[SourceSystem] [nvarchar](255) NULL,
-	[Cleansed] [bit] NULL,
-	[ErrorRecord] [bit] NULL,
-	[ErrorReason] [nvarchar](255) NULL,
-	[Processed] [bit] NULL,
-	[RunDate] [datetime] NULL,
+[ETLKey] [uniqueidentifier] NOT NULL,
+[UniqueDims] [varbinary](35) NULL,
+[UniqueRows] [varbinary](16) NULL,
+[SourceSystem] [nvarchar](255) NULL,
+[Cleansed] [bit] NULL,
+[ErrorRecord] [bit] NULL,
+[ErrorReason] [nvarchar](255) NULL,
+[Processed] [bit] NULL,
+[RunDate] [datetime] NULL,
  CONSTRAINT [PK_YourStageTableName] PRIMARY KEY CLUSTERED 
 (
        [ETLKey] ASC
@@ -31,7 +31,7 @@ GO
 ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_ETLKey]  DEFAULT (newid()) FOR [ETLKey]
 GO
 
-ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_SourceSystem]  DEFAULT (N'Copia') FOR [SourceSystem]
+ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_SourceSystem]  DEFAULT (N'DatabaseName') FOR [SourceSystem]
 GO
 
 ALTER TABLE [YourSchemaName].[YourStageTableName] ADD  CONSTRAINT [DF_YourStageTableName_Cleansed]  DEFAULT ((0)) FOR [Cleansed]

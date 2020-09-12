@@ -39,7 +39,7 @@ CREATE NONCLUSTERED INDEX NCIDX_1 ON #DimYourDimensionTable(SourceSystemKey)
 CREATE NONCLUSTERED INDEX NCIDX_2 ON #DimYourJunkDimension(RowHash)
 
 
---BEGIN TRANSACTION
+BEGIN TRANSACTION
 ----
 
 INSERT INTO #DimYourDimensionTable(SourceSystemKey, ETLKey)

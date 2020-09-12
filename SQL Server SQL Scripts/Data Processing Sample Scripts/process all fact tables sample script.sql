@@ -17,14 +17,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_ProcessFactTables]') AND type in (N'P', N'PC'))
-BEGIN
-EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[sp_ProcessFactTables] AS' 
-END
-GO
 
-
-ALTER PROCEDURE [dbo].[sp_ProcessFactTables]
+CREATE PROCEDURE [dbo].[sp_ProcessFactTables]
 AS
 BEGIN
 

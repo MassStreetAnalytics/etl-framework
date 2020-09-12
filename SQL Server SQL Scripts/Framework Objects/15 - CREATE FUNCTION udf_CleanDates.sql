@@ -7,7 +7,7 @@ Description: Clean dates to conform with DimDateCK
 /*
 Directions for use. 
 1. Set @EmptyRecordCode and @ErrorDateCode to the values appropriate to your system. 
-2. Find and replace YourDatabase.YourSchema with the name of your data warehouse
+2. Find and replace YourDatabase.YourSchema.DimDate with the name of your data warehouse
 and the schema that it lives in.
 */
 
@@ -27,11 +27,10 @@ AS
 
 BEGIN
 
-DECLARE @CleanDate NCHAR(8)
 DECLARE @MinDate DATE
 DECLARE @MaxDate DATE
-DECLARE @EmptyRecordCode BIGINT = 99991231
-DECLARE @ErrorDateCode BIGINT = 99991130
+DECLARE @EmptyRecordCode BIGINT = 00000000
+DECLARE @ErrorDateCode BIGINT = 11111111
 
 SELECT @MaxDate = CAST(MAX(DateCK) AS NCHAR(8))
 FROM YourDatabase.YourSchema.DimDate
@@ -39,6 +38,7 @@ WHERE DateCK NOT IN (@EmptyRecordCode,@ErrorDateCode)
 
 SELECT @MinDate = CAST(MIN(DateCK) AS NCHAR(8))
 FROM YourDatabase.YourSchema.DimDate
+WHERE DateCK NOT IN (@EmptyRecordCode,@ErrorDateCode)
 
 
 --Set empty dates to the empty field code
