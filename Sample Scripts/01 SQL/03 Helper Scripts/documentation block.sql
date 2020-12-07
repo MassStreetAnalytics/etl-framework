@@ -2,6 +2,6 @@
 -- Author: Bob Wakefield
 -- Create date: 13Oct17
 -- Description: clean price data
--- Modification Log:
+-- Change Log:
 -- 15Oct20 Created doc bloc sample. - BW
 -- =============================================

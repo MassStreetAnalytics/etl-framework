@@ -8,11 +8,10 @@
 USE [ODS]
 GO
 
-/****** Object:  Table [rpt].[TableLoadReport]    Script Date: 12/7/2017 10:57:51 PM ******/
+
 DROP TABLE IF EXISTS [rpt].[TableLoadReport]
 GO
 
-/****** Object:  Table [rpt].[TableLoadReport]    Script Date: 12/7/2017 10:57:51 PM ******/
 SET ANSI_NULLS ON
 GO
 

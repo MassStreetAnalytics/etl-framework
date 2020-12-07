@@ -1,8 +1,8 @@
-/****** Object:  Table [dbo].[YourFactTableName]    Script Date: 11/20/2017 11:49:12 PM ******/
+
 DROP TABLE IF EXISTS [dbo].[YourFactTableName]
 GO
 
-/****** Object:  Table [dbo].[YourFactTableName]    Script Date: 11/20/2017 11:49:12 PM ******/
+
 SET ANSI_NULLS ON
 GO
 

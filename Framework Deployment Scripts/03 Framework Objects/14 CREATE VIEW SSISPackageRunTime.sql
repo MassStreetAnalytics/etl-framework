@@ -8,11 +8,11 @@
 USE [ODS]
 GO
 
-/****** Object:  View [dbo].[v_SSISPackageRunTime]    Script Date: 3/29/2018 12:38:55 PM ******/
+
 DROP VIEW IF EXISTS [dbo].[SSISPackageRunTime]
 GO
 
-/****** Object:  View [dbo].[v_SSISPackageRunTime]    Script Date: 3/29/2018 12:38:55 PM ******/
+
 SET ANSI_NULLS ON
 GO
 

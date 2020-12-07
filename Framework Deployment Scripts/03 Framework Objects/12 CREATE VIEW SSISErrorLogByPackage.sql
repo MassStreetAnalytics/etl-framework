@@ -8,11 +8,11 @@
 USE [ODS]
 GO
 
-/****** Object:  View [dbo].[v_SSISErrorLogByPackage]    Script Date: 3/29/2018 12:38:05 PM ******/
+
 DROP VIEW IF EXISTS [dbo].[SSISErrorLogByPackage]
 GO
 
-/****** Object:  View [dbo].[v_SSISErrorLogByPackage]    Script Date: 3/29/2018 12:38:05 PM ******/
+
 SET ANSI_NULLS ON
 GO
 

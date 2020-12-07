@@ -5,11 +5,11 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[vol].[LoadO
 ALTER TABLE [vol].[LoadObservations] DROP CONSTRAINT IF EXISTS [FK_LoadObservations_Tables]
 GO
 
-/****** Object:  Table [vol].[LoadObservations]    Script Date: 11/21/2017 12:35:23 AM ******/
+
 DROP TABLE IF EXISTS [vol].[LoadObservations]
 GO
 
-/****** Object:  Table [vol].[LoadObservations]    Script Date: 11/21/2017 12:35:23 AM ******/
+
 SET ANSI_NULLS ON
 GO
 

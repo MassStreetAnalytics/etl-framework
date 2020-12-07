@@ -8,12 +8,12 @@
 USE [SSISManagement]
 GO
 
-/****** Object:  Table [dbo].[SSISConfigurations]    Script Date: 1/28/2016 3:50:03 PM ******/
+
 
 DROP TABLE IF EXISTS [dbo].[SSISConfigurations]
 GO
 
-/****** Object:  Table [dbo].[SSISConfigurations]    Script Date: 1/28/2016 3:50:03 PM ******/
+
 SET ANSI_NULLS ON
 GO
 

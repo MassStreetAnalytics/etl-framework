@@ -1,11 +1,11 @@
 USE [ODS]
 GO
 
-/****** Object:  Table [vol].[Tables]    Script Date: 11/21/2017 12:34:59 AM ******/
+
 DROP TABLE IF EXISTS [vol].[Tables]
 GO
 
-/****** Object:  Table [vol].[Tables]    Script Date: 11/21/2017 12:34:59 AM ******/
+
 SET ANSI_NULLS ON
 GO
 

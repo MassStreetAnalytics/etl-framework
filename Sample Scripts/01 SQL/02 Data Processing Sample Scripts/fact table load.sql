@@ -9,7 +9,7 @@ USE ODS
 GO
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_ProcessFactYourFactTable]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[sp_ProcessFactYourFactTable]
+DROP PROCEDURE [dbo].[usp_ProcessFactYourFactTable]
 GO
 
 
@@ -19,7 +19,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE sp_ProcessFactYourFactTable
+CREATE PROCEDURE usp_ProcessFactYourFactTable
 AS
 BEGIN
 

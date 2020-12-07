@@ -8,11 +8,11 @@
 USE [ODS]
 GO
 
-/****** Object:  View [dbo].[v_RowCountLog]    Script Date: 3/29/2018 12:36:51 PM ******/
+
 DROP VIEW IF EXISTS [dbo].[RowCountLog]
 GO
 
-/****** Object:  View [dbo].[v_RowCountLog]    Script Date: 3/29/2018 12:36:51 PM ******/
+
 SET ANSI_NULLS ON
 GO
 

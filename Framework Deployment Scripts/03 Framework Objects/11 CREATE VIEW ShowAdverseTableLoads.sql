@@ -7,11 +7,11 @@
 USE [ODS]
 GO
 
-/****** Object:  View [dbo].[v_ShowAdverseTableLoads]    Script Date: 3/29/2018 12:37:43 PM ******/
+
 DROP VIEW IF EXISTS [dbo].[ShowAdverseTableLoads]
 GO
 
-/****** Object:  View [dbo].[v_ShowAdverseTableLoads]    Script Date: 3/29/2018 12:37:43 PM ******/
+
 SET ANSI_NULLS ON
 GO
 

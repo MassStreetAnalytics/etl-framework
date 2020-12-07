@@ -8,7 +8,7 @@ USE ODS
 
 GO
 
-DROP PROCEDURE IF EXISTS dbo.sp_ProcessDimYourDimensionName
+DROP PROCEDURE IF EXISTS dbo.usp_ProcessDimYourDimensionName
 GO
 
 
@@ -18,7 +18,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE sp_ProcessDimYourDimensionName
+CREATE PROCEDURE usp_ProcessDimYourDimensionName
 AS
 BEGIN
 

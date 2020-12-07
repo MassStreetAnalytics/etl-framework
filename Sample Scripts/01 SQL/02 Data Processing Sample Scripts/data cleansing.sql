@@ -7,11 +7,11 @@
 USE [ODS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_CleanEODPrices]    Script Date: 9/15/2016 12:05:55 AM ******/
-DROP PROCEDURE [dbo].[sp_CleanEODPrices]
+
+DROP PROCEDURE [dbo].[usp_CleanEODPrices]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_CleanEODPrices]    Script Date: 9/15/2016 12:05:55 AM ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -19,7 +19,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_CleanEODPrices] 
+CREATE PROCEDURE [dbo].[usp_CleanEODPrices] 
 AS
 BEGIN
 
