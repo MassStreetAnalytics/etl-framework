@@ -1,25 +1,18 @@
---CREATE PROCEDURE sp_RecordRowCounts AS
---BEGIN
+-- =============================================
+-- Author: Bob Wakefield
+-- Create date: 7Dec20
+-- Description: Records the row counts of tables
+-- in the data warehouse.
+-- Change Log:
+-- =============================================
 
---for testing
---Will create a random amount of records in the database for one particular table
---currently set up for FactFinance
-DECLARE @random INT;
-DECLARE @upper INT;
-DECLARE @lower INT;
-SET @lower = 1 ---- The lowest random number
-SET @upper = 20 ---- The highest random number
-SELECT @random = ROUND(((@upper - @lower -1) * RAND() + @lower), 0)
+DROP PROCEDURE IF EXISTS usp_RecordRowCounts
 
-DECLARE @counter smallint;
-SET @counter = 1;
-WHILE @counter < @random
-   BEGIN
-      INSERT INTO [AdventureWorksDW2012].[dbo].[FactFinance]([DateKey], [OrganizationKey], [DepartmentGroupKey], [ScenarioKey], [AccountKey], [Amount], [Date])
-      SELECT 20050701, 5, 7, 1, 21, 4358, CURRENT_TIMESTAMP
-      SET @counter = @counter + 1
-   END;
 GO
+
+CREATE PROCEDURE usp_RecordRowCounts AS
+BEGIN
+
 
 --
 BEGIN TRANSACTION
@@ -27,7 +20,8 @@ BEGIN TRANSACTION
 CREATE TABLE #counts(table_name nvarchar(255), row_count int)
 CREATE TABLE #date_of_last_observations(table_id INT, row_count INT, date_of_last_observation DATETIME)
 
-EXEC [AdventureWorksDW2012]..sp_MSForEachTable @command1='INSERT #counts (table_name, row_count) SELECT REPLACE(SUBSTRING(''?'',8,LEN(''?'')),'']'',''''), COUNT(*) FROM ?'
+--Change [YourDataWarehouse] to the name of your EDW database.
+EXEC [YourDataWarehouse]..sp_MSForEachTable @command1='INSERT #counts (table_name, row_count) SELECT REPLACE(SUBSTRING(''?'',8,LEN(''?'')),'']'',''''), COUNT(*) FROM ?'
 
 --SELECT *
 --FROM #counts

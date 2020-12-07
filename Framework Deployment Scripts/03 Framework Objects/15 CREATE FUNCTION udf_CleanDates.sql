@@ -1,15 +1,10 @@
-/*
-Author: Bob Wakefield
-Create date: 17Jun18
-Description: Clean dates to conform with DimDateCK
-*/
-
-/*
-Directions for use. 
-1. Set @EmptyRecordCode and @ErrorDateCode to the values appropriate to your system. 
-2. Find and replace YourDatabase.YourSchema.DimDate with the name of your data warehouse
-and the schema that it lives in.
-*/
+-- =============================================
+-- Author: Bob Wakefield
+-- Create date:  17Jun18
+-- Description: Clean dates to conform with DimDateCK
+-- Change Log:
+-- 15Oct20 Created doc bloc sample. - BW
+-- =============================================
 
 USE ODS
 
@@ -31,6 +26,9 @@ DECLARE @MinDate DATE
 DECLARE @MaxDate DATE
 DECLARE @EmptyRecordCode BIGINT = 00000000
 DECLARE @ErrorDateCode BIGINT = 11111111
+
+--Find and replace YourDatabase.YourSchema.DimDate with the name of your data warehouse
+--and the schema that it lives in.
 
 SELECT @MaxDate = CAST(MAX(DateCK) AS NCHAR(8))
 FROM YourDatabase.YourSchema.DimDate

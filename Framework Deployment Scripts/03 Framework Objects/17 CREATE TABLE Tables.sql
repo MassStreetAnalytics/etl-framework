@@ -1,3 +1,10 @@
+-- =============================================
+-- Author: Bob Wakefield
+-- Create date: 7Dec20
+-- Description: Creates Tables table.
+-- Change Log:
+-- =============================================
+
 USE [ODS]
 GO
 

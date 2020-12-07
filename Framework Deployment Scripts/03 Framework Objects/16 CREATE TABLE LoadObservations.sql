@@ -1,3 +1,11 @@
+-- =============================================
+-- Author: Bob Wakefield
+-- Create date: 7Dec20
+-- Description: Creates the load obvservations table.
+-- Change Log:
+-- 15Oct20 Created doc bloc sample. - BW
+-- =============================================
+
 USE [ODS]
 GO
 
