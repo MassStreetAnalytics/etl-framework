@@ -1,9 +1,7 @@
 -- =============================================
 -- Author: Bob Wakefield
--- Create date: 7Dec20
--- Description: Records the row counts of tables
--- in the data warehouse.
--- Change Log:
+-- Create date: 15Oct17
+-- Description: Records how many records each fact table is getting loaded with.
 -- =============================================
 
 DROP PROCEDURE IF EXISTS usp_RecordRowCounts
@@ -79,8 +77,8 @@ DROP TABLE #date_of_last_observations
 --END
 
 --Debugging
-SELECT t.table_name, lo.*
-FROM ODS..tables t
-LEFT OUTER JOIN ODS..load_observations lo
-ON t.table_id = lo.table_id
-WHERE t.table_name = 'FactFinance'
+--SELECT t.table_name, lo.*
+--FROM ODS..tables t
+--LEFT OUTER JOIN ODS..load_observations lo
+--ON t.table_id = lo.table_id
+--WHERE t.table_name = 'FactFinance'
