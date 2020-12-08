@@ -18,6 +18,7 @@ FETCH NEXT FROM BatchingCursor INTO @Year, @Month;
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
+--the transaction is optional
 BEGIN TRANSACTION
 --All logic goes in here
 --Any select statements from [Sometable] need to be suffixed with:
