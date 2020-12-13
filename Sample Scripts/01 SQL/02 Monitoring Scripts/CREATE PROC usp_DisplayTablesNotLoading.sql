@@ -10,25 +10,17 @@
 USE [ODS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_DisplayTablesNotLoading]    Script Date: 4/11/2016 10:52:48 AM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_DisplayTablesNotLoading]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[sp_DisplayTablesNotLoading]
+
+DROP PROCEDURE IF EXISTS [dbo].[usp_DisplayTablesNotLoading]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_DisplayTablesNotLoading]    Script Date: 3/10/2017 5:47:54 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_DisplayTablesNotLoading]') AND type in (N'P', N'PC'))
-BEGIN
-EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[sp_DisplayTablesNotLoading] AS' 
-END
-GO
-
-ALTER PROCEDURE [dbo].[sp_DisplayTablesNotLoading] AS
+CREATE PROCEDURE [dbo].[usp_DisplayTablesNotLoading] AS
 BEGIN
 
 CREATE TABLE #UnWantedTables(TableID BIGINT)

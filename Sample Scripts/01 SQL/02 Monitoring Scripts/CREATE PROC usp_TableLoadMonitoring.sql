@@ -13,26 +13,18 @@
 USE [ODS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_TableLoadMonitoring]    Script Date: 4/7/2016 3:50:37 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_TableLoadMonitoring]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[sp_TableLoadMonitoring]
+
+DROP PROCEDURE IF EXISTS [dbo].[usp_TableLoadMonitoring]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_TableLoadMonitoring]    Script Date: 4/7/2016 3:50:37 PM ******/
+
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_TableLoadMonitoring]') AND type in (N'P', N'PC'))
-BEGIN
-EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[sp_TableLoadMonitoring] AS' 
-END
-GO
-
-
-ALTER PROCEDURE [dbo].[sp_TableLoadMonitoring] AS
+CREATE PROCEDURE [dbo].[usp_TableLoadMonitoring] AS
 BEGIN
 
 CREATE TABLE #UnWantedTables(TableID INT)

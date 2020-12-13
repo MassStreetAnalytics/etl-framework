@@ -1,7 +1,11 @@
 -- =============================================
 -- Author: Bob Wakefield
 -- Create date: 15Oct17
--- Description: Mark records in stage tables as having been processsed.
+-- Description: Mark records in stage tables as 
+-- having been processsed.
+-- Every fact table load you build will need code
+-- added to the usp_MarkRecordsAsProcessed stored 
+-- procedure. 
 -- =============================================
 
 USE ODS
