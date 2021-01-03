@@ -1,2 +1,0 @@
-# Implementing New Stage Tables
-

@@ -1,2 +1,0 @@
-# Creating The Semantic Layer
-

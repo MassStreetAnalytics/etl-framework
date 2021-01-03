@@ -1,2 +1,0 @@
-# Implementing New Fact Tables
-
