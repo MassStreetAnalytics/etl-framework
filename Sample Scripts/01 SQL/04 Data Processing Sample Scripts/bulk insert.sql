@@ -1,6 +1,6 @@
 --Insert into the view
-BULK INSERT FlightsStaging
-FROM 'E:\flights.csv'
+BULK INSERT YourSchema.YourTable
+FROM 'E:\YourFileName.csv'
 WITH (
 FIELDTERMINATOR = ',',
 ROWTERMINATOR = '0x0a',

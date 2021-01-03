@@ -1,7 +1,7 @@
 -- =============================================
--- Author: Bob Wakefield
--- Create date: 13Oct17
--- Description: Sample Fact table process
+-- Author:
+-- Create date:
+-- Description:
 -- =============================================
 
 USE ODS

@@ -4,7 +4,6 @@
 -- Description: Check Stage Tables for unprocessed records.
 -- =============================================
 
---https://tutorials.massstreetuniversity.com/transact-sql/solutions/notification-emails.html
 
 USE ODS
 GO

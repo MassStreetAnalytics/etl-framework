@@ -5,6 +5,7 @@
 --and are ready to process it. Obviously, if you have a large flat file,
 --you can just use BULK INSERT.
 
+
 DECLARE @Year INT
 DECLARE @Month INT
 

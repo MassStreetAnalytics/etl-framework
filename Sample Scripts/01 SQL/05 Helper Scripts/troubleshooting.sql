@@ -13,4 +13,3 @@ KILL [SPID]
 --Example
 KILL 59
 
-GO

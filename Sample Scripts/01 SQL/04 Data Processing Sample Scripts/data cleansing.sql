@@ -1,14 +1,15 @@
 -- =============================================
--- Author: Bob Wakefield
--- Create date: 13Oct17
--- Description: clean price data
+-- Author:
+-- Create date:
+-- Description:
+-- Usage: 
 -- =============================================
 
 USE [ODS]
 GO
 
 
-DROP PROCEDURE [dbo].[usp_CleanEODPrices]
+DROP PROCEDURE [dbo].[usp_CleanYourStageTableNameData]
 GO
 
 
@@ -19,7 +20,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[usp_CleanEODPrices] 
+CREATE PROCEDURE [dbo].[usp_CleanYourStageTableNameData] 
 AS
 BEGIN
 
@@ -27,15 +28,15 @@ BEGIN TRANSACTION
 
 
 --Convert the rest of the dates into YYYYMMDD format
-UPDATE [eod].[EODPrices]
-SET [Date] = udf_CleanDate([Date])
+UPDATE [YourSchemaName].[YourStageTableNameData]
+SET [YourDateColumn] = udf_CleanDate([Date])
 
 --Remove CR from volume data
-UPDATE [eod].[EODPrices]
-SET Volume = replace(Volume, char(13), '')
+UPDATE [YourSchemaName].[YourStageTableNameData]
+SET YourColumn = REPLACE(YourColumn, CHAR(13) + CHAR(10), '')
 
 
-UPDATE [eod].[EODPrices]
+UPDATE [YourSchemaName].[YourStageTableNameData]
 SET Cleansed = 1
 
 

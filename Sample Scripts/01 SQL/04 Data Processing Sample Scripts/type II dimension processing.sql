@@ -1,9 +1,8 @@
 -- =============================================
--- Author: Bob Wakefield
--- Create date: 5Oct17
--- Description: Sample script to update a Type II dimension
--- A full explanation can be found here:
--- https://datadrivenperspectives.com/how-to-properly-update-a-type-ii-slowly-changing-dimension-with-t-sql-8ec03242c915
+-- Author:
+-- Create date:
+-- Description:
+-- Usage: https://tutorials.massstreetuniversity.com/transact-sql/solutions/load-typeII-dimension.html
 -- =============================================
 
 USE ODS
@@ -31,9 +30,11 @@ DECLARE @HighDate AS DATETIME
 
 SELECT @HighDate = CAST(MAX(DateCK) AS NCHAR(8))
 FROM DimDate
+WHERE DateCK NOT IN (00000000,11111111)
 
 SELECT @LowDate = CAST(MIN(DateCK) AS NCHAR(8))
 FROM DimDate
+WHERE DateCK NOT IN (00000000,11111111)
 
 
 

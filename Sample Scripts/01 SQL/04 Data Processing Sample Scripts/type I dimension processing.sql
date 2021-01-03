@@ -1,7 +1,7 @@
 -- =============================================
--- Author: Bob Wakefield
--- Create date: 5Oct17
--- Description: Sample script to update a Type I dimension
+-- Author:
+-- Create date:
+-- Description:
 -- =============================================
 
 USE ODS
@@ -27,9 +27,11 @@ DECLARE @HighDate AS DATETIME
 
 SELECT @HighDate = CAST(MAX(DateCK) AS NCHAR(8))
 FROM DimDate
+WHERE DateCK NOT IN (00000000,11111111)
 
 SELECT @LowDate = CAST(MIN(DateCK) AS NCHAR(8))
 FROM DimDate
+WHERE DateCK NOT IN (00000000,11111111)
 
 TRUNCATE TABLE [cm].[DimYourDimensionName]
 
@@ -91,10 +93,6 @@ target.[YourColumn] = source.[YourColumn],
 CreatedBy = SYSTEM_USER,
 CreatedOn = CURRENT_TIMESTAMP
 ;
-
-
-;
-
 
 TRUNCATE TABLE cm.DimYourDimensionName
 

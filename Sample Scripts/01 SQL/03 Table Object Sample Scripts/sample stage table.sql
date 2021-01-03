@@ -1,3 +1,13 @@
+-- =============================================
+-- Author:
+-- Create date:
+-- Description:
+-- Directions for use:
+-- Replace YourSchemaName with the schema for your stage table.
+-- YourStageTableName with the name of your staging table.
+-- Drop your columns in row 16.
+-- Replace DatabaseName with the name of the source system.
+-- =============================================
 USE ODS
 
 DROP TABLE IF EXISTS YourSchemaName.YourStageTableNameData
@@ -13,6 +23,7 @@ GO
 
 CREATE TABLE YourSchemaName.YourStageTableNameData(
 [ETLKey] [uniqueidentifier] NOT NULL,
+--your columns here.
 [UniqueDims] [varbinary](35) NULL,
 [UniqueRows] [varbinary](16) NULL,
 [SourceSystem] [nvarchar](255) NULL,

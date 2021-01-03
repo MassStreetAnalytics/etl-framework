@@ -1,4 +1,4 @@
-USE PSD
+USE YourEDW
 GO
 
 SELECT 
