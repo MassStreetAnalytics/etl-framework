@@ -35,6 +35,10 @@ SET [YourDateColumn] = udf_CleanDate([Date])
 UPDATE [YourSchemaName].[YourStageTableNameData]
 SET YourColumn = REPLACE(YourColumn, CHAR(13) + CHAR(10), '')
 
+UPDATE [YourSchemaName].[YourStageTableNameData]
+SET [YourJoinColumn] = ''
+WHERE [YourJoinColumn] IS NULL
+
 
 UPDATE [YourSchemaName].[YourStageTableNameData]
 SET Cleansed = 1
