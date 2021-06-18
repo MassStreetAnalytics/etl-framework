@@ -33,15 +33,15 @@ print("Starting: Processing Data")
 try:
     print("Validating status of site and internet connection")
     urllib.request.urlopen(SiteURL)
-except:
-    sys.exit("ERROR: The  site {} is unavailable.  Please check your internet connection.".format(SiteURL))
+except Exception as e:
+    print(e)
 
 # download the file
 try:
     print("Downloading file to:", FullSourcePath)
     urllib.request.urlretrieve(FileURL, FullSourcePath)
-except:
-    sys.exit("ERROR: Unable to download the file: {}".format(FileURL))
+except Exception as e:
+    print(e)
 
 
 # Read csv data into pandas and write | delimited txt file
@@ -54,16 +54,16 @@ try:
     fileTimeStampedTXT = DestinationDirectory + FileName + downloadTimeStamp + "_data.txt"
     print("Writing txt file to: {}".format(fileTimeStampedTXT))
     df.to_csv(fileTimeStampedTXT, sep="|",index=False)
-except:
-    sys.exit("ERROR: Unable to read file and create txt file: {}".format(FullSourcePath))
+except Exception as e:
+    print(e)
 
 # delete csv file
 try:
     print("Deleting csv file: {}".format(FullSourcePath))
     if os.path.isfile(FullSourcePath):
         os.remove(FullSourcePath)
-except:
-    sys.exit("ERROR: Unable to delete file: {}".format(FullSourcePath))
+except Exception as e:
+    print(e)
 
 #alter the below for your file.
 #index table only if necessary
@@ -85,8 +85,8 @@ try:
     conn.commit()
     csr.close()
     conn.close()
-except:
-    sys.exit("ERROR: Unable to update SQL Server stage table.")
+except Exception as e:
+    print(e)
 
 # zip txt file to archive
 try:
@@ -95,16 +95,16 @@ try:
     archive = zf.ZipFile(zipFile, "w")
     archive.write(fileTimeStampedTXT, os.path.basename(fileTimeStampedTXT))
     archive.close
-except:
-    sys.exit("ERROR: unable to create zip file for file: {}".format(fileTimeStampedTXT))
+except Exception as e:
+    print(e)
 
 # delete txt file
 try:
     print("Deleting  txt file: {}".format(fileTimeStampedTXT))
     if os.path.isfile(fileTimeStampedTXT):
         os.remove(fileTimeStampedTXT)
-except:
-    sys.exit("ERROR: Unable to delete file: {}".format(fileTimeStampedTXT))
+except Exception as e:
+    print(e)
 
 # Script Complete
 print("Complete: Processing Data")

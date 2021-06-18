@@ -23,8 +23,8 @@ try:
     conn.commit()
     csr.close()
     conn.close()
-except:
-    sys.exit("ERROR: Unable to query table or write file")
+except Exception as e:
+    print(e)
 
 #Write File
 df.to_csv(kFileDestination, sep="|",index=False)

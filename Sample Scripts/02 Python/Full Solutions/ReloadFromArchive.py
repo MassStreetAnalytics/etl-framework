@@ -24,8 +24,9 @@ print("Starting: Processing ReloadAchive")
 try:
     print("Getting zip files from archive directory {}".format(ArchiveDestinationDirectory))
     zipFiles = glob.glob(ArchiveDestinationDirectory + "*.zip", recursive=False)
-except:
-    sys.exit("ERROR: Loading zip files from archive {}".format(ArchiveDestinationDirectory))
+except Exception as e:
+    print(e)
+
 
 # Report number of zip files found
 print("{} zip files found".format(len(zipFiles)))
@@ -37,15 +38,15 @@ for zFile in zipFiles:
         zip_ref = zf.ZipFile(zFile, 'r')
         zip_ref.extractall(DestinationDirectory)
         zip_ref.close()
-    except:
-        print("ERROR: Unable to unzip file {}".format(zFile))
+    except Exception as e:
+        print(e)
 
 # get list of txt files in C:/InterfaceAndExtractFiles/../In/
 try:
     print("Getting txt files from directory {}".format(DestinationDirectory))
     txtFiles = glob.glob(DestinationDirectory + "*.txt", recursive=False)
-except:
-    sys.exit("ERROR: Loading txt files from {}".format(DestinationDirectory))
+except Exception as e:
+    print(e)
 
 # Report number of zip files found
 print("{} txt files found".format(len(txtFiles)))
@@ -55,8 +56,8 @@ try:
     print("Connecting to SQL Server database")
     connection_string = 'DSN=ETL;'
     conn = db.connect(connection_string)
-except:
-    sys.exit("ERROR: Unable to connect to database")
+except Exception as e:
+    print(e)
 
 # preparing SQL Server
 try:
@@ -66,8 +67,8 @@ try:
     csr.execute("DROP INDEX IF EXISTS [index name] ON [stage table]")
     conn.commit()
     csr.close()
-except:
-    sys.exit("ERROR: Unable to prepare SQL database")
+except Exception as e:
+    print(e)
 
 # creating counters
 txtFileCount = len(txtFiles)
@@ -83,15 +84,15 @@ for tFile in txtFiles:
         csr.execute(sql)
         conn.commit()
         csr.close()
-    except:
-        sys.exit("ERROR: Unableto load {} file".format(tFile))
+    except Exception as e:
+        print(e)
 
     try:
         print("Deleting {} file".format(tFile))
         if os.path.isfile(tFile):
             os.remove(tFile)
-    except:
-        sys.exit("ERROR: Deleting file {}".format(tFile))
+    except Exception as e:
+        print(e)
 
 # Complete SQL Server processing
 try:
@@ -103,8 +104,8 @@ try:
     conn.commit()
     csr.close()
     conn.close()
-except:
-    sys.exit("ERROR: Unable to complete SQl Server processing")
+except Exception as e:
+    print(e)
 
 # Complete
 print("COMPLETE: Process Reload from Archive")
