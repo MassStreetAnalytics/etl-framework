@@ -12,7 +12,6 @@ kFileDestination = 'C:/InterfaceAndExtractFiles/../Out/data.csv' #full path to p
 print("Starting: Processing Data")
 
 #alter the below for your file.
-#bulk load txt file to SQL Server
 try:
     print("Connecting to SQL Server database")
     connection_string = 'DSN=ETL;'
