@@ -8,13 +8,13 @@
 -- The default for the table is to delete all UK date columns (because ‘Murica), and rename 
 -- the US columns so they are not explicitly labeled as US values.
 -- If you do not require a month dimension, you can delete DimMonth after the script has run.
--- Replace [YourDatabaseName] with the specific name of your EDW.
+-- Replace [YourDataWarehouseName] with the specific name of your EDW.
 -- Specify values for the variables @StartDate and @EndDate. 
 -- These values will define the range of data stored in the date dimension. 
 -- The value of start date must be less than your end date.
 -- =============================================
 
-USE [YourDatabaseName]
+USE [YourDataWarehouseName]
 
 BEGIN TRANSACTION alpha
 DROP TABLE IF EXISTS dw.DimMonth

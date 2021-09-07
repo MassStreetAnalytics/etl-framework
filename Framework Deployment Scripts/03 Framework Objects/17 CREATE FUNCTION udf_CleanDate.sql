@@ -29,11 +29,11 @@ DECLARE @ErrorDateCode BIGINT = 11111111
 --and the schema that it lives in.
 
 SELECT @MaxDate = CAST(MAX(DateCK) AS NCHAR(8))
-FROM YourDatabase.YourSchema.DimDate
+FROM YourDataWarehouse.dw.DimDate
 WHERE DateCK NOT IN (@EmptyRecordCode,@ErrorDateCode)
 
 SELECT @MinDate = CAST(MIN(DateCK) AS NCHAR(8))
-FROM YourDatabase.YourSchema.DimDate
+FROM YourDataWarehouse.dw.DimDate
 WHERE DateCK NOT IN (@EmptyRecordCode,@ErrorDateCode)
 
 

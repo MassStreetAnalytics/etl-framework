@@ -15,7 +15,7 @@ DROP PROCEDURE IF EXISTS [dbo].[LogPackageError]
 DROP PROCEDURE IF EXISTS [dbo].[LogTaskPreExecute]
 DROP PROCEDURE IF EXISTS [dbo].[LogTaskPostExecute]
 DROP PROCEDURE IF EXISTS [dbo].[LogVariableValueChanged]
-
+GO
 
 CREATE PROCEDURE [dbo].[LogPackageStart]
 (    @BatchLogID int
@@ -23,7 +23,7 @@ CREATE PROCEDURE [dbo].[LogPackageStart]
     ,@ExecutionInstanceID uniqueidentifier 
     ,@MachineName varchar(64) 
     ,@UserName varchar(64) 
-    ,@StartDatetime datetime 
+    ,@StartDateTime datetime 
     ,@PackageVersionGUID uniqueidentifier 
     ,@VersionMajor int 
     ,@VersionMinor int 
@@ -71,15 +71,15 @@ SELECT @PackageVersionID = PackageVersionID
 /* Get BatchLogID */
 IF ISNULL(@BatchLogID,0) = 0
 Begin
-    INSERT INTO dbo.BatchLog (StartDatetime, [Status])
-        VALUES (@StartDatetime, 'R')
+    INSERT INTO dbo.BatchLog (StartDateTime, [Status])
+        VALUES (@StartDateTime, 'R')
     SELECT @BatchLogID = SCOPE_IDENTITY()
     SELECT @EndBatchAudit = 1
 End
 
 /* Create PackageLog Record */
-INSERT INTO dbo.PackageLog (BatchLogID, PackageVersionID, ExecutionInstanceID, MachineName, UserName, StartDatetime, [Status])
-    VALUES(@BatchLogID, @PackageVersionID, @ExecutionInstanceID, @MachineName, @UserName, @StartDatetime, 'R')
+INSERT INTO dbo.PackageLog (BatchLogID, PackageVersionID, ExecutionInstanceID, MachineName, UserName, StartDateTime, [Status])
+    VALUES(@BatchLogID, @PackageVersionID, @ExecutionInstanceID, @MachineName, @UserName, @StartDateTime, 'R')
 
 SELECT @PackageLogID = SCOPE_IDENTITY()
 
@@ -99,14 +99,14 @@ BEGIN
     SET NOCOUNT ON
     UPDATE dbo.PackageLog
         SET Status = 'S'
-        , EndDatetime = getdate()
+        , EndDateTime = getdate()
         WHERE PackageLogID = @PackageLogID
 
     IF @EndBatchAudit = 1
     Begin
         UPDATE dbo.BatchLog
         SET Status = 'S'
-        , EndDatetime = getdate()
+        , EndDateTime = getdate()
         WHERE BatchLogID = @BatchLogID
     End
 END
@@ -130,14 +130,13 @@ BEGIN
 
     UPDATE dbo.PackageLog
         SET Status = 'F'
-            , EndDatetime = getdate()
         WHERE PackageLogID = @PackageLogID
 
     IF @EndBatchAudit = 1
     Begin
     UPDATE dbo.BatchLog
         SET Status = 'F'
-        , EndDatetime = getdate()
+        , EndDateTime = getdate()
         WHERE BatchLogID = @BatchLogID
     End
 END

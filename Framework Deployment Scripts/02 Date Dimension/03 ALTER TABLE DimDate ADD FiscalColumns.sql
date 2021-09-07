@@ -11,10 +11,10 @@
 -- @FiscalYear – The first year the date dimension has data.
 -- @LastYear – The last year the date dimension has data.
 -- @FirstLeapYearInPeriod – The first leap year after the first year of data in the date dimension.
--- Once you have those values, replace [YourDatabaseName] with the specific name of your EDW and run the script.
+-- Once you have those values, replace [YourDataWarehouseName] with the specific name of your EDW and run the script.
 -- =============================================
 
-USE [YourDatabaseName]
+USE [YourDataWarehouseName]
 
 
 --Add Fiscal date columns to DimDate

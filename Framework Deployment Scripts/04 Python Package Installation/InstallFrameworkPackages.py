@@ -2,7 +2,7 @@ import sys
 import subprocess
 
 FailedInstalls = {}
-Packages = ['fuzzywuzzy','python-Levenshtein','pyunpack','pyodbc', 'yaml', 'smtplib']
+Packages = ['fuzzywuzzy','python-Levenshtein','pyunpack','pyodbc']
 
 for package in Packages:
     try:
