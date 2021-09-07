@@ -1,0 +1,7 @@
+dns: 'DSN=ETL;'
+remote_root_directory: 'C:/'
+from_address: 'from email address of alert system'
+to_address: 'to email address of alert system'
+password: 'smtp server password'
+smtp_server: 'smtp server URL'
+smtp_port: smtp port value
