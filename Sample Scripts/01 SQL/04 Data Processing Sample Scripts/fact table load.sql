@@ -91,9 +91,9 @@ b.DimCK,
 p.SourceSystem
 FROM YourStageTable p
 JOIN #DimYourDimensionTable a
-ON p.ETLKey = a.ETLKey
+ON a.ETLKey = p.ETLKey
 JOIN #DimYourJunkDimension b
-ON p.ETLKey = .ETLKey
+ON b.ETLKey = p.ETLKey
 WHERE p.Processed = 0
 AND p.[ErrorRecord] = 0
 
