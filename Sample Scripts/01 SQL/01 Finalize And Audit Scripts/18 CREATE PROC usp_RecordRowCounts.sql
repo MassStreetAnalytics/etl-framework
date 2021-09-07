@@ -2,6 +2,8 @@
 -- Author: Bob Wakefield
 -- Create date: 15Oct17
 -- Description: Records how many records each fact table is getting loaded with.
+--Change Log:
+--21Aug21 Updated for use with SQL Server 2019 BW
 -- =============================================
 USE ODS
 
@@ -16,11 +18,15 @@ BEGIN
 --
 BEGIN TRANSACTION
 
-CREATE TABLE #counts(table_name nvarchar(255), row_count int)
-CREATE TABLE #date_of_last_observations(table_id INT, row_count INT, date_of_last_observation DATETIME)
+DROP TABLE IF EXISTS #counts
+DROP TABLE IF EXISTS #DateOfLastObservations
+
+
+CREATE TABLE #counts(TableName nvarchar(255), [RowCount] int)
+CREATE TABLE #DateOfLastObservations(TableID INT, [RowCount] INT, DateOfLastObservation DATETIME)
 
 --Change [YourDataWarehouse] to the name of your EDW database.
-EXEC [YourDataWarehouse]..sp_MSForEachTable @command1='INSERT #counts (table_name, row_count) SELECT REPLACE(SUBSTRING(''?'',8,LEN(''?'')),'']'',''''), COUNT(*) FROM ?'
+EXEC [DVDRentalDW]..sp_MSforeachtable @command1='INSERT #counts (TableName, [RowCount]) SELECT REPLACE(SUBSTRING(''?'',8,LEN(''?'')),'']'',''''), COUNT(*) FROM ?'
 
 --SELECT *
 --FROM #counts
@@ -28,49 +34,51 @@ EXEC [YourDataWarehouse]..sp_MSForEachTable @command1='INSERT #counts (table_nam
 
 MERGE vol.Tables as target
 USING(
-SELECT table_name, CURRENT_TIMESTAMP AS date_measured, row_count 
+SELECT TableName, CURRENT_TIMESTAMP AS date_measured, [RowCount] 
 FROM #counts 
 ) AS source
-ON source.table_name COLLATE DATABASE_DEFAULT = target.table_name COLLATE DATABASE_DEFAULT
+ON source.TableName COLLATE DATABASE_DEFAULT = target.TableName COLLATE DATABASE_DEFAULT
 
 WHEN NOT MATCHED THEN
-INSERT ([table_name],[date_created])
-VALUES (source.table_name, CURRENT_TIMESTAMP);
+INSERT ([TableName],[DateCreated])
+VALUES (source.TableName, CURRENT_TIMESTAMP);
 
 
-INSERT INTO #date_of_last_observations(table_id,date_of_last_observation)
-SELECT [table_id], MAX([date_of_current_observation]) AS date_of_last_observation 
+INSERT INTO #DateOfLastObservations(TableID,DateOfLastObservation)
+SELECT [TableID], MAX([DateOfCurrentObservation]) AS DateOfLastObservation 
 FROM vol.LoadObservations
-GROUP BY [table_id]
+GROUP BY [TableID]
 
 ;
-WITH previous_observations(date_of_last_observation, last_row_count, table_id)
+WITH previous_observations(DateOfLastObservation, last_RowCount, TableID)
 AS(
-SELECT lo.[date_of_current_observation], lo.[row_count], lo.table_id
+SELECT lo.[DateOfCurrentObservation], lo.[RowCount], lo.TableID
 FROM vol.LoadObservations lo
-JOIN #date_of_last_observations llo
-ON lo.[date_of_current_observation] = llo.date_of_last_observation
-AND lo.[table_id] = llo.table_id
+JOIN #DateOfLastObservations llo
+ON lo.[DateOfCurrentObservation] = llo.DateOfLastObservation
+AND lo.[TableID] = llo.TableID
 ),
-current_sd_level(table_id, current_three_sd_level)
+current_sd_level(TableID, current_three_sd_level)
 AS(
-SELECT table_id, STDEV(change_from_last_observation) * 3
+SELECT TableID, STDEV(ChangeFromLastObservation) * 3
 FROM vol.LoadObservations
-GROUP BY table_id
+GROUP BY TableID
 )
-INSERT [load_observations](table_id, date_of_current_observation, date_of_last_observation, row_count, change_from_last_observation, current_three_sd_level)
-SELECT t.table_id, CURRENT_TIMESTAMP AS date_of_current_observation, po.date_of_last_observation, c.row_count, ABS(c.row_count - po.last_row_count), ABS(sd.current_three_sd_level)
+INSERT vol.[LoadObservations](TableID, DateOfCurrentObservation, DateOfLastObservation, [RowCount], ChangeFromLastObservation, [CurrentThreeSDLevel])
+SELECT t.TableID, CURRENT_TIMESTAMP AS DateOfCurrentObservation, po.DateOfLastObservation, c.[RowCount], ABS(c.[RowCount] - po.last_RowCount), ABS(sd.current_three_sd_level)
 FROM #counts c 
 JOIN vol.Tables t
-ON c.table_name = t.table_name
+ON c.TableName COLLATE DATABASE_DEFAULT = t.TableName COLLATE DATABASE_DEFAULT
 LEFT OUTER JOIN previous_observations po
-ON  t.table_id = po.table_id
+ON  t.TableID = po.TableID
 LEFT OUTER JOIN current_sd_level sd
-ON t.table_id = sd.table_id
+ON t.TableID = sd.TableID
 
 
 COMMIT TRANSACTION
 
 
 DROP TABLE #counts
-DROP TABLE #date_of_last_observations
+DROP TABLE #DateOfLastObservations
+
+END
